@@ -1,0 +1,1 @@
+# NamOnjo-SM-G973N

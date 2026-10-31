@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#102b61">
+<title>Nam On-jo — Galaxy S10</title>
+<style>
+:root{--blue:#102b61;--ink:#172033;--muted:#788397;--line:#e7eaf0;--paper:#f5f7fb}
+*{box-sizing:border-box} body{margin:0;background:#102b61;color:var(--ink);font-family:Arial,"Noto Sans KR",sans-serif;min-height:100vh;min-height:100dvh;}
+.phone{width:100%;height:100vh;height:100dvh;min-height:0;background:#090d17;border:0;border-radius:0;padding:0;box-shadow:none;position:relative;}
+.screen{height:100%;border-radius:0;overflow:hidden;position:relative;background:linear-gradient(160deg,#153875,#10285b 52%,#071b43);color:white;}
+.punch{position:absolute;top:9px;left:13px;width:13px;height:13px;border-radius:50%;background:#070b13;border:2px solid #333d50;z-index:5}
+.status{height:31px;padding:9px 17px 0 34px;display:flex;justify-content:space-between;font-size:11px;position:relative;z-index:2}
+.status-right{letter-spacing:1px}
+.home{height:calc(100% - 73px);padding:30px 19px 12px;display:flex;flex-direction:column}
+.weather{text-align:center;margin:24px 0 35px}.weather-icon{font-size:38px;line-height:1.2;color:#f4f7ff}.weather .city{font-size:16px;margin-top:10px;opacity:.95}.weather .desc{font-size:12px;opacity:.78;margin-top:7px}
+.search{height:43px;border-radius:24px;background:#f7f8fb;color:#647084;display:flex;align-items:center;padding:0 14px;gap:10px;font-size:14px;box-shadow:0 2px 5px #0002}.g{font-weight:bold;color:#4285f4;font-size:20px}
+.dots{text-align:center;font-size:13px;opacity:.8;margin:26px 0 auto}
+.apps{display:grid;grid-template-columns:repeat(5,1fr);gap:9px 4px;margin-bottom:14px}
+.app{border:0;background:transparent;color:white;padding:0;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:10px;cursor:pointer;min-width:0}
+.icon{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;font-size:23px;box-shadow:0 2px 5px #0002}
+.icon svg{width:76%;height:76%;display:block}
+.phoneIcon{background:#08b978}
+.kakaoMark{display:flex;align-items:center;justify-content:center;background:#fee500;color:#3c1e1e}
+.kakaoMark span{position:relative;display:flex;align-items:center;justify-content:center;width:72%;height:53%;border-radius:48%;background:#3c1e1e;color:#fee500;font-size:9px;font-weight:900;letter-spacing:-.4px}
+.kakaoMark span:after{content:'';position:absolute;left:17%;bottom:-5px;border-width:6px 6px 0 0;border-style:solid;border-color:#3c1e1e transparent transparent transparent}
+.webIcon{background:#665bd1}.storeIcon{background:#fff}.camIcon{background:#e91e63}
+.contactsIcon{background:#ff7b32}.galleryIcon{background:#e60063}.notesIcon{background:#ffb900}.settingsIcon{background:#52627b}
+.nav{height:42px;display:flex;justify-content:space-around;align-items:center;background:rgba(5,20,48,.28);color:#f4f7ff;padding:0 28px}.nav-btn{width:52px;height:42px;border:0;background:transparent;color:inherit;display:grid;place-items:center;padding:0;cursor:pointer}.nav-btn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.panel{position:absolute;inset:31px 0 42px;background:var(--paper);color:var(--ink);display:none;flex-direction:column;z-index:4}
+.panel.active{display:flex}.bar{height:58px;background:white;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 17px;gap:15px;font-size:18px;font-weight:600}.back{border:0;background:none;font-size:24px;color:#34425b;padding:0;cursor:pointer}
+.content{padding:18px;overflow:auto;flex:1}.hint{background:white;border:1px solid var(--line);border-radius:15px;padding:15px;color:#5c687b;font-size:13px;line-height:1.6}
+.listrow{padding:14px 2px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px}.avatar{width:40px;height:40px;border-radius:50%;background:#dce5f5;color:#27436e;display:grid;place-items:center;font-weight:bold}
+.small{font-size:11px;color:var(--muted)}.empty{height:100%;display:grid;place-items:center;text-align:center;color:#778399;font-size:13px;line-height:1.7}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.tile{background:white;border:1px solid var(--line);border-radius:13px;padding:15px 8px;text-align:center;font-size:12px}
+.bottom-note{text-align:center;color:#9ba6b8;font-size:10px;padding:10px}
+@media(max-height:700px){.weather{margin:8px 0 20px}.dots{margin:14px 0 auto}.icon{width:40px;height:40px}}
+</style>
+</head>
+<body>
+<div class="phone" aria-label="Galaxy S10 phone simulator">
+ <main class="screen">
+  <div class="punch"></div>
+  <div class="status"><span>12:20 PM</span><span class="status-right">◆ ▰ 95%</span></div>
+  <section class="home" id="home">
+   <div class="weather"><div class="weather-icon">☁</div><div class="city">⌖ 효산시</div><div class="desc">날씨 정보 미설정</div></div>
+   <div class="search"><span class="g">G</span><span>검색</span><span style="margin-left:auto">🎙</span></div>
+   <div class="dots">●　○</div>
+   <div class="apps">
+    <button class="app" onclick="openApp('phone')"><span class="icon phoneIcon"><svg viewBox="0 0 48 48"><path d="M14 7c-3 0-6 4-6 7 0 13 19 32 32 32 3 0 7-4 7-7l-9-9-7 6c-6-3-11-8-14-14l6-7-9-8z" fill="white" transform="translate(-4 -3) scale(.94)"/></svg></span>전화</button>
+    <button class="app" onclick="openApp('kakao')"><span class="icon kakaoMark"><span>TALK</span></span>카카오톡</button>
+    <button class="app" onclick="openApp('internet')"><span class="icon webIcon"><svg viewBox="0 0 48 48"><circle cx="22" cy="23" r="13" fill="white"/><ellipse cx="26" cy="24" rx="19" ry="8" transform="rotate(-35 26 24)" fill="none" stroke="#d9e4ff" stroke-width="5"/></svg></span>인터넷</button>
+    <button class="app" onclick="openApp('store')"><span class="icon storeIcon"><svg viewBox="0 0 48 48"><path d="M10 6L36 24 10 42Z" fill="#20c77a"/><path d="M10 6L29 19 22 25Z" fill="#36a9ff"/><path d="M22 25L29 19 40 24Q43 26 40 28L29 34Z" fill="#ffca28"/><path d="M10 42L22 25 29 34Z" fill="#ea4b87"/></svg></span>Play 스토어</button>
+    <button class="app" onclick="openApp('camera')"><span class="icon camIcon"><svg viewBox="0 0 48 48"><path d="M9 15h7l3-4h11l3 4h6a4 4 0 0 1 4 4v16a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4V19a4 4 0 0 1 4-4z" fill="white"/><circle cx="24" cy="27" r="8" fill="#e91e63"/><circle cx="24" cy="27" r="5" fill="white"/><circle cx="36" cy="20" r="2" fill="#e91e63"/></svg></span>카메라</button>
+    <button class="app" onclick="openApp('contacts')"><span class="icon contactsIcon"><svg viewBox="0 0 48 48"><circle cx="24" cy="16" r="8" fill="white"/><path d="M9 39c0-8 6-13 15-13s15 5 15 13v2H9z" fill="white"/></svg></span>연락처</button>
+    <button class="app" onclick="openApp('gallery')"><span class="icon galleryIcon"><svg viewBox="0 0 48 48"><g fill="white" transform="translate(24 24)"><ellipse cy="-10" rx="6" ry="10"/><ellipse cy="-10" rx="6" ry="10" transform="rotate(60)"/><ellipse cy="-10" rx="6" ry="10" transform="rotate(120)"/><ellipse cy="-10" rx="6" ry="10" transform="rotate(180)"/><ellipse cy="-10" rx="6" ry="10" transform="rotate(240)"/><ellipse cy="-10" rx="6" ry="10" transform="rotate(300)"/><circle r="4" fill="#e91e63"/></g></svg></span>갤러리</button>
+    <button class="app" onclick="openApp('notes')"><span class="icon notesIcon"><svg viewBox="0 0 48 48"><path d="M12 7h24a3 3 0 0 1 3 3v21L28 42H12a3 3 0 0 1-3-3V10a3 3 0 0 1 3-3z" fill="white"/><path d="M28 42V31h11" fill="none" stroke="#f4b400" stroke-width="2"/></svg></span>노트</button>
+    <button class="app" onclick="openApp('settings')"><span class="icon settingsIcon"><svg viewBox="0 0 48 48"><path d="M20 5h8l1 5 4 2 5-2 4 7-4 4v6l4 4-4 7-5-2-4 2-1 5h-8l-1-5-4-2-5 2-4-7 4-4v-6l-4-4 4-7 5 2 4-2z" fill="white"/><circle cx="24" cy="24" r="7" fill="#64748b"/></svg></span>설정</button>
+   </div>   </div>
+  </section>
+  <section class="panel" id="panel">
+   <div class="bar"><button class="back" onclick="goHome()">‹</button><span id="panelTitle">앱</span></div>
+   <div class="content" id="panelContent"></div>
+   <div class="bottom-note">NAM ON-JO · GALAXY S10 CONCEPT</div>
+  </section>
+  <div class="nav" aria-label="Samsung navigation bar">
+   <button class="nav-btn" aria-label="최근 앱" onclick="goHome()"><svg viewBox="0 0 24 24"><path d="M5 4v16M12 4v16M19 4v16" /></svg></button>
+   <button class="nav-btn" aria-label="홈" onclick="goHome()"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4" /></svg></button>
+   <button class="nav-btn" aria-label="뒤로" onclick="goHome()"><svg viewBox="0 0 24 24"><path d="M15 4 7 12l8 8" /></svg></button>
+  </div>
+ </main>
+</div>
+<script>
+const canonContacts=[
+ ["이청산","소꿉친구 · 이웃"],
+ ["이삭","친구"],
+ ["최남라","같은 반 반장"],
+ ["이수혁","같은 반 친구"],
+ ["서효령","같은 반 친구"],
+ ["윤귀남","같은 학교 학생"],
+ ["남소주","아버지"]
+];
+const pending='<div class="hint"><b>원작 자료 확인 대기</b><br>현재 확인 가능한 극중 화면이나 대사가 제공되지 않아 내용을 임의로 만들지 않았어. 실제 장면을 확인한 뒤 추가할 수 있어.</div>';
+function openApp(app){
+ const panel=document.getElementById('panel'), title=document.getElementById('panelTitle'), body=document.getElementById('panelContent');
+ const names={phone:'Phone',kakao:'KakaoTalk',internet:'Internet',store:'Play Store',camera:'Camera',contacts:'Contacts',gallery:'Gallery',notes:'Notes',settings:'Settings'};
+ title.textContent=names[app]||'App'; panel.classList.add('active');
+ if(app==='contacts'){
+  body.innerHTML='<div class="hint">아래는 작품에서 온조와 관계가 확인되는 인물 목록이야. 실제 기기에 저장된 연락처라는 뜻은 아니야.</div>'+canonContacts.map(c=>'<div class="listrow"><div class="avatar">'+c[0][0]+'</div><div><b>'+c[0]+'</b><div class="small">'+c[1]+'</div></div></div>').join('');
+ }else if(app==='kakao'){
+  body.innerHTML='<div class="hint" style="background:#fee500;color:#3c1e1e;border:0"><b>카카오톡</b><br>원작에서 실제 대화 내용이 확인된 경우에만 채팅을 추가할게.</div><div class="empty">확인된 카카오톡 대화 기록이 없어.</div>';
+ }else if(app==='gallery'||app==='camera'){
+  body.innerHTML='<div class="empty">실제 온조의 사진·동영상 자료를 확인하면 여기에 표시할게.<br><br>드라마 스틸컷을 개인 사진으로 꾸며 넣지 않아.</div>';
+ }else if(app==='phone'){
+  body.innerHTML='<div class="empty">실제 통화 기록 미확인</div>';
+ }else if(app==='notes'){
+  body.innerHTML='<div class="empty">극중에서 실제로 확인된 메모가 없어.</div>';
+ }else if(app==='internet'){
+  body.innerHTML='<div class="empty">실제 검색 기록 미확인</div>';
+ }else if(app==='store'){
+  body.innerHTML='<div class="empty">Play Store</div>';
+ }else if(app==='settings'){
+  body.innerHTML='<div class="tiles"><div class="tile">연결</div><div class="tile">디스플레이</div><div class="tile">배터리</div><div class="tile">소리</div><div class="tile">잠금화면</div><div class="tile">휴대전화 정보</div></div><p class="small">기기 외형은 Galaxy S10을 참고한 웹 시뮬레이터야.</p>';
+ }
+}
+function goHome(){document.getElementById('panel').classList.remove('active')}
+</script>
+</body>
+</html>
